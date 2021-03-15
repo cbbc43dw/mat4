@@ -51,6 +51,7 @@
 							<script>
 								// Variable to hold request
 								var data = [];
+								var m="(*o*)";
 								$("#dataForm").submit(function(event) {
 								data=[];
 								
@@ -82,7 +83,7 @@
 								document.getElementById('b2').innerHTML = parseInt(data[6])*( parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]));
 								document.getElementById('b1').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]));
 								document.getElementById('b0').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]))+parseInt(data[1]));
-								
+								document.getElementById('cc').innerHTML = m;
 								document.getElementById('c5').innerHTML = parseInt(data[5]);
 								document.getElementById('c4').innerHTML = parseInt(data[6])*parseInt(data[5])+parseInt(data[4]);
 								document.getElementById('c3').innerHTML = parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]);
