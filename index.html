@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Division Sintetica</title>
+		<meta charset="utf-8"/>
+		<!--Caracteristicas para mobile -->
+		<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+		<!--Mathjax
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		-->
+	</head>
+	<body>
+		<div data-role="page"  id="portada">
+            <div data-role="header" data-theme="b">
+			<a href="#tabla" data-role="button" data-icon="grid" data-iconpos="notext" class="ui-btn-right">Resultado</a>
+                <h1>Divisi&oacute;n Sint&eacute;tica</h1>
+            </div>
+			<div data-role="content">
+				<div data-role="collapsible-set" data-theme="a" data-content-theme="e">
+	                <div data-role="collapsible" data-collapsed="false">
+					   <h3>Division sintetica</h3>
+						<p>Este es el contenido del collapsible el cual podemos ocultar</p>
+						 <img src="division.jpg" width="350px">
+                  </div>
+
+					<div data-role="collapsible">
+					   <h3>Datos de la division</h3>
+							<form action="#" method="get" id="dataForm">
+							<div data-role="fieldcontain">
+							<b>Ecuacion:&nbsp;a<sub>5</sub>x<sup>5</sup>+a<sub>4</sub>x<sup>4</sup>+a<sub>3</sub>x<sup>3</sup>+a<sub>2</sub>x<sup>2</sup>+a<sub>1</sub>x+a<sub>0</sub></b><br>
+							Coeficientes:<br>
+								<input type="range" name="x5" id="x5" max="15" min="-15" value="0" data-theme="b" data-track-theme="a"/>x<sup>5</sup><br>
+								<input type="range" name="x4" id="x4" max="15" min="-15" value="0" data-theme="b" data-track-theme="a"/>x<sup>4</sup><br>
+								<input type="range" name="x3" id="x3" max="15" min="-15" value="0" data-theme="b" data-track-theme="a"/>x<sup>3</sup><br>
+								<input type="range" name="x2" id="x2" max="15" min="-15" value="0" data-theme="b" data-track-theme="a"/>x<sup>2</sup><br>
+								<input type="range" name="x1" id="x1" max="15" min="-15" value="0" data-theme="b" data-track-theme="a"/>x<br>
+								<input type="range" name="x0" id="x0" max="15" min="-15" value="0" data-theme="b" data-track-theme="a"/>#<br>
+								Binomio de la forma (x-c)<br>
+								<input type="range" name="c" id="c" max="10" min="-10" value="0" data-theme="b" data-track-theme="a"/>c<br>
+						   </div>
+							<input type="submit" name="submit" value="Salvar" />
+						</form>
+						<a href="#tabla" data-role="button" data-inline="true">Ver resultado</a>
+							<script>
+								// Variable to hold request
+								var data = [];
+								$("#dataForm").submit(function(event) {
+								data=[];
+								
+									event.preventDefault();
+									data.push($(this).find('input[name="x0"]').val());
+									data.push($(this).find('input[name="x1"]').val());
+									data.push($(this).find('input[name="x2"]').val());
+									data.push($(this).find('input[name="x3"]').val());
+									data.push($(this).find('input[name="x4"]').val());
+									data.push($(this).find('input[name="x5"]').val());
+									data.push($(this).find('input[name="c"]').val());
+								 });
+
+								function processData() {
+									alert(data);
+								}
+								function presenta(){
+								document.getElementById('vc').innerHTML = data[6];
+								document.getElementById('a0').innerHTML = data[0];
+								document.getElementById('a1').innerHTML = data[1];
+								document.getElementById('a2').innerHTML = data[2];
+								document.getElementById('a3').innerHTML = data[3];
+								document.getElementById('a4').innerHTML = data[4];
+								document.getElementById('a5').innerHTML = data[5];
+								
+								document.getElementById('b5').innerHTML = 0;
+								document.getElementById('b4').innerHTML = parseInt(data[6])*parseInt(data[5]);
+								document.getElementById('b3').innerHTML = parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]));
+								document.getElementById('b2').innerHTML = parseInt(data[6])*( parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]));
+								document.getElementById('b1').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]));
+								document.getElementById('b0').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]))+parseInt(data[1]));
+								
+								document.getElementById('c5').innerHTML = parseInt(data[5]);
+								document.getElementById('c4').innerHTML = parseInt(data[6])*parseInt(data[5])+parseInt(data[4]);
+								document.getElementById('c3').innerHTML = parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]);
+								document.getElementById('c2').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]);
+								document.getElementById('c1').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]))+parseInt(data[1]);
+								document.getElementById('c0').innerHTML = parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*(parseInt(data[6])*parseInt(data[5])+parseInt(data[4]))+parseInt(data[3]))+parseInt(data[2]))+parseInt(data[1]))+parseInt(data[0]);
+								}
+							</script>
+                   </div>
+				</div>
+			</div>
+			<div data-role="footer">
+				<h3>CBBC Matematicas IV</h3>
+            </div>
+		</div>
+<!-- Tabla de division sintetica -->
+		<div data-role="page" id="tabla" data-title="Resultado">
+		   <div data-role="header" data-theme="b">
+				<a href="#portada" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-right">Inicio</a>
+				<h1>Resultado</h1>
+		   </div>
+		   <div data-role="content"> 
+				<button onclick="presenta()">Procesar datos</button>	
+			<table border=0 width="300px">
+			<caption></caption>
+			<thead  >
+			<th colspan=7 style="border: 1px solid #999">
+				(a<sub>5</sub>x<sup>5</sup>+a<sub>4</sub>x<sup>4</sup>+a<sub>3</sub>x<sup>3</sup>+a<sub>2</sub>x<sup>2</sup>+a<sub>1</sub>x+a<sub>0</sub>)/(x-c)
+			</th>
+			</thead>
+			<tbody>
+				<tr>
+					<th ></th><th><h6>x<sup>5</sup></h6></th><th><h6>x<sup>4</sup></h6></th><th><h6>x<sup>3</sup></h6></th><th><h6>x<sup>2</sup></h6></th><th><h6>x</h6></th><th><h6><h6>#</h6></th>
+				</tr>
+				<tr>
+					<td  style="border-bottom: 1px solid #0000ff; border-right: 1px solid #0000ff;"><h5 id="vc">0</td>
+					<td  style="border-bottom: 1px solid #000; "><h5 id="a5">0</td>
+					<td style="border-bottom: 1px solid #000; "><h5 id="a4"></td>
+					<td style="border-bottom: 1px solid #000; "><h5 id="a3"></td>
+					<td  style="border-bottom: 1px solid #000; "><h5 id="a2"></td>
+					<td style="border-bottom: 1px solid #000; "><h5 id="a1"></td>
+					<td style="border-bottom: 1px solid #000; "><h5 id="a0"></td>
+				</tr>
+				<tr>
+					<td style=" border-right: 1px solid #000;"><h5 id="bc"></td>
+					<td><h5 id="b5">0</td>
+					<td><h5 id="b4"></td>
+					<td><h5 id="b3"></td>
+					<td><h5 id="b2"></td>
+					<td><h5 id="b1"></td>
+					<td><h5 id="b0"></td>
+				</tr>
+				<tr>
+					<td style=" border-right: 1px solid #000;border-top: 1px solid #000;"><h5 id="cc">0</td>
+					<td  bgcolor="#bbd1ea" style="border-top: 1px solid #000;"><h5 id="c5">0</td>
+					<td  bgcolor="#bbd1ea"  style="border-top: 1px solid #000;"><h5 id="c4"></td>
+					<td  bgcolor="#bbd1ea"  style="border-top: 1px solid #000;"><h5 id="c3"></td>
+					<td  bgcolor="#bbd1ea"  style="border-top: 1px solid #000;"><h5 id="c2"></td>
+					<td  bgcolor="#bbd1ea"  style="border-top: 1px solid #000;"><h5 id="c1"></td>
+					<td style="border: 1px solid #ff0000;"><h5 id="c0"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><h6>x<sup>4</sup></h6></td>
+					<td><h6>x<sup>3</sup></h6></td>
+					<td><h6>x<sup>2</sup></h6></td>
+					<td><h6>x</td>
+					<td><h6>#</h6></td>
+					<td><h6>Residuo</h6></td>
+				</tr>
+			</tbody>
+			<tfoot>
+			</tfoot>
+		</table>
+		<br>
+    
+		   </div>
+		   <div data-role="footer">
+			  Pie de página
+		   </div>
+		</div>
+	</body>
+</html>
